@@ -1,0 +1,47 @@
+h1, h2, pre {
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin-top: 5vh;
+}
+
+pre {
+    font-size: 1.2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    min-width: 40vw;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1% 5%;
+}
+
+@media screen and (max-width: 1024px){
+    pre {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    form {
+        width: 80vw;
+    }
+
+    pre {
+        font-size: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    pre {
+        font-size: 0.4rem;
+    }
+}

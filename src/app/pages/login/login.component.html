@@ -1,0 +1,64 @@
+<main>
+    <pre>
+ ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄               ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+ ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌             ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+ ▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌             ▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌
+ ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌             ▐░▌                    ▐░▌
+ ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌
+ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀█░█▀▀ ▐░█▀▀▀▀█░█▀▀  ▀▀▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ 
+      ▐░▌     ▐░▌       ▐░▌▐░▌     ▐░▌  ▐░▌     ▐░▌               ▐░▌          ▐░▌          
+      ▐░▌     ▐░▌       ▐░▌▐░▌      ▐░▌ ▐░▌      ▐░▌              ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ 
+      ▐░▌     ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌             ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+       ▀       ▀         ▀  ▀         ▀  ▀         ▀               ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
+    </pre>
+
+    <mat-card>
+        <mat-card-content>
+            <h1>Yarr, matey! <br> It's time to log in and sail the high seas!</h1>
+            <form [formGroup]="login">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    @if (login.controls.email.invalid) {
+                    <mat-error>{{getErrorMessage(login.controls.email)}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    @if (login.controls.password.invalid) {
+                        <mat-error>{{getErrorMessage(login.controls.password)}}</mat-error>
+                    }
+                </mat-form-field>
+                <button mat-raised-button color="primary">Login</button>
+            </form>
+
+            <h2>Or buckle up and create an account</h2>
+            <form [formGroup]="register">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                    @if (register.controls.username.invalid) {
+                        <mat-error>{{getErrorMessage(register.controls.username)}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    @if (register.controls.email.invalid) {
+                        <mat-error>{{getErrorMessage(register.controls.email)}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    @if (register.controls.password.invalid) {
+                        <mat-error>{{getErrorMessage(register.controls.password)}}</mat-error>
+                    }
+                </mat-form-field>
+                <button mat-raised-button color="primary">Register</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</main>
