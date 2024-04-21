@@ -1,0 +1,30 @@
+mat-drawer-container {
+    height: 100%;
+    background-color: transparent;
+}
+
+mat-drawer {
+    width: 40%;
+}
+
+mat-drawer a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1rem 1rem 1rem 2rem;
+    display: block;
+}
+
+mat-drawer li {
+    list-style-type: none;
+}
+
+mat-drawer ul {
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    mat-drawer {
+        width: 80%;
+    }
+}

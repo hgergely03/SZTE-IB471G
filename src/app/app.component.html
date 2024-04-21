@@ -1,1 +1,14 @@
-<router-outlet />
+<mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer #drawer mode="over">
+        <ul (click)="drawer.toggle()">
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/profile">Profile</a></li>
+            <li><a routerLink="/upload">Upload</a></li>
+        </ul>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-navbar (onMenuClick)="drawer.toggle()"></app-navbar>
+        <router-outlet />
+    </mat-drawer-content>
+</mat-drawer-container>

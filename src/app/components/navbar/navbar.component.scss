@@ -1,0 +1,32 @@
+ul {
+    padding: 0;
+    padding-left: 1rem;
+}
+
+li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#drawer-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #drawer-button {
+        display: block;
+    }
+
+    ul {
+        display: none;
+    }
+
+    li {
+        display: block;
+    }
+}
