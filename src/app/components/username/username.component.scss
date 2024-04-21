@@ -1,0 +1,40 @@
+#profile-badge {
+    max-width: 20%;
+    display: block;
+    margin: 0 auto;
+}
+
+.relative-container {
+    position: relative;
+}
+
+#username {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+    #profile-badge {
+        max-width: 40%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #profile-badge {
+        max-width: 60%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #profile-badge {
+        max-width: 70%;
+    }
+
+    #username {
+        font-size: 1.2rem;
+    }
+}

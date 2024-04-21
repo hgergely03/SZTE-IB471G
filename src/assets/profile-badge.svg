@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 366 399">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2b2f38;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+        filter: url(#outer-glow-2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="63.96" y1="81.53" x2="299.37" y2="316.94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9f1ff4"/>
+      <stop offset="1" stop-color="#841ff4"/>
+    </linearGradient>
+    <filter id="outer-glow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur" stdDeviation="20"/>
+      <feFlood flood-color="#2b00ff" flood-opacity="1"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path class="cls-1" d="m43.43,280.46V118.54c46.03-26.49,92.05-52.98,138.08-79.47,47.02,27.15,94.04,54.3,141.06,81.46-.99,53.31-1.99,106.62-2.98,159.93-46.03,26.49-92.05,52.98-138.08,79.47-46.03-26.49-92.05-52.98-138.08-79.47Z"/>
+  <path class="cls-2" d="m181.4,27.08c-49.47,28.47-98.93,56.94-148.4,85.41v174.02c49.47,28.47,98.93,56.94,148.4,85.41,49.47-28.47,98.93-56.94,148.4-85.41,1.07-57.3,2.14-114.59,3.2-171.89-50.53-29.18-101.07-58.36-151.6-87.54Zm138.19,253.38c-46.03,26.49-92.05,52.98-138.08,79.47-46.03-26.49-92.05-52.98-138.08-79.47V118.54c46.03-26.49,92.05-52.98,138.08-79.47,47.02,27.15,94.04,54.3,141.06,81.46-.99,53.31-1.99,106.62-2.98,159.93Z"/>
+</svg>

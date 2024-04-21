@@ -1,0 +1,33 @@
+h2 {
+    text-align: center;
+}
+
+table {
+    min-width: 40%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card {
+    width: 40vw;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
