@@ -1,1 +1,21 @@
-<p>details works!</p>
+<h1>{{MOCK_DATA.name}}</h1>
+<main>
+    <mat-card>
+        <mat-card-content>{{MOCK_DATA.description}}</mat-card-content>
+    </mat-card>
+    <div>
+        <app-torrent-actions [torrent]="MOCK_DATA"></app-torrent-actions>
+    </div>
+</main>
+
+<section>
+    <div class="comments">
+        @for (comment of MOCK_DATA.comments; track $index) {
+            <mat-card>
+                <mat-card-title>{{comment.userName}}</mat-card-title>
+                <mat-card-content>{{comment.content}}</mat-card-content>
+            </mat-card>
+            <mat-divider></mat-divider>
+        }
+    </div>
+</section>

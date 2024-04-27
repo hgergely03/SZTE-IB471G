@@ -1,6 +1,6 @@
 <main>
     <h1><q>If buying isn't owning<br>then pirating isn't stealing</q></h1>
-    
+
     <mat-accordion>
         <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
@@ -9,10 +9,16 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <p>
-                Yarr mateys, it's time to sail the high seas and pirate some good stuff! Even though it's highly illegal and I do <b>not</b> in any way condone it.
+                Yarr mateys, it's time to sail the high seas and pirate some good stuff! Even though it's highly illegal
+                and I do <b>not</b> in any way condone it.
             </p>
             <p>
-                Warez is a common computing and broader cultural term referring to pirated software (i.e. illegally copied, often after deactivation of anti-piracy measures) that is distributed via the Internet. The circumvention of copy protection (cracking) is an essential step in generating warez, and based on this common mechanism, the software-focused definition has been extended to include other copyright-protected materials, including movies and games. Distribution and trade of copyrighted works without payment of fees or royalties generally violates national and international copyright laws and agreements.
+                Warez is a common computing and broader cultural term referring to pirated software (i.e. illegally
+                copied, often after deactivation of anti-piracy measures) that is distributed via the Internet. The
+                circumvention of copy protection (cracking) is an essential step in generating warez, and based on this
+                common mechanism, the software-focused definition has been extended to include other copyright-protected
+                materials, including movies and games. Distribution and trade of copyrighted works without payment of
+                fees or royalties generally violates national and international copyright laws and agreements.
             </p>
         </mat-expansion-panel>
     </mat-accordion>
@@ -21,10 +27,10 @@
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Torrent name</th>
-          <td mat-cell *matCellDef="let element"><a [routerLink]="['/details', element.id]">{{element.name}}</a></td>
+            <th mat-header-cell *matHeaderCellDef>Torrent name</th>
+            <td mat-cell *matCellDef="let element"><a [routerLink]="['/details', element.id]">{{element.name}}</a></td>
         </ng-container>
-    
+
         <ng-container matColumnDef="size">
             <th mat-header-cell *matHeaderCellDef>Size</th>
             <td mat-cell *matCellDef="let element">{{element.size | torrentSize}}</td>
@@ -34,33 +40,14 @@
             <th mat-header-cell *matHeaderCellDef>Upload date</th>
             <td mat-cell *matCellDef="let element">{{element.uploadDate | yarrTime}}</td>
         </ng-container>
-    
+
         <ng-container matColumnDef="icons">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-                <div class="buttons">
-                    <div class="stat-button">
-                        <a [href]="element.link" download mat-icon-button>
-                            <mat-icon>file_download</mat-icon>
-                        </a>
-                       {{element.downloaded}}
-                    </div>
-                    <div class="stat-button">
-                        <button (click)="dislikeTorrent(element.id)" mat-icon-button>
-                            <mat-icon>expand_less</mat-icon>
-                        </button>
-                        {{element.downloaded}}
-                    </div>
-                    <div class="stat-button">
-                        <button (click)="likeTorrent(element.id)" mat-icon-button>
-                            <mat-icon>expand_more</mat-icon>
-                        </button>
-                        {{element.downloaded}}
-                    </div>
-                </div>
+            <td class="pad" mat-cell *matCellDef="let element">
+                <app-torrent-actions [torrent]="element"></app-torrent-actions>
             </td>
         </ng-container>
-      
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

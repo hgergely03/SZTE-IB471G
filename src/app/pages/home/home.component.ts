@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Torrent } from '../../model/torrent';
 import { RouterLink } from '@angular/router';
 import { YarrTimePipe } from '../../pipes/yarr-time.pipe';
 import { TorrentSizePipe } from "../../pipes/torrent-size.pipe";
+import { TorrentActionsComponent } from "../../components/torrent-actions/torrent-actions.component";
 
 const MOCK_DATA: Torrent[] = [
     { id: 1, name: 'Torrent 1', downloaded: 100, uploadDate: new Date(), uploaderName: 'Uploader 1', description: 'Description 1', comments: [], likes: 0, size: 100, link: 'https://filesamples.com/samples/document/txt/sample3.txt'},
@@ -22,23 +21,16 @@ const MOCK_DATA: Torrent[] = [
     styleUrl: './home.component.scss',
     imports: [
         MatExpansionModule,
-        MatIconModule,
-        MatButtonModule,
         MatTableModule,
         RouterLink,
         YarrTimePipe,
-        TorrentSizePipe
+        TorrentSizePipe,
+        TorrentActionsComponent
     ]
 })
 export class HomeComponent {
     displayedColumns: string[] = ['name', 'size', 'upload-date', 'icons'];
     dataSource = MOCK_DATA;
     
-    likeTorrent(torrentId: number) {
-        console.log(`Like torrent with id ${torrentId}`);
-    }
-
-    dislikeTorrent(torrentId: number) {
-        console.log(`Dislike torrent with id ${torrentId}`);
-    }
+    
 }

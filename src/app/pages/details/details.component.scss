@@ -1,0 +1,51 @@
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+mat-card {
+    padding: 1rem;
+}
+main mat-card {
+    flex-basis: 40%;
+}
+
+section {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 992px) {
+    main {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    main mat-card {
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+        width: 80%;
+    }
+
+    section {
+        width: 80%;
+    }
+
+    .comments {
+        width: 100%;
+    }
+}
