@@ -1,1 +1,20 @@
-<p>upload works!</p>
+<h1>Upload new torrent</h1>
+
+<form [formGroup]="upload">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error [hidden]="upload.controls.name.invalid">Torrent name is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error [hidden]="upload.controls.name.invalid">Torrent description is required!</mat-error>
+      </mat-form-field>
+    <mat-form-field>
+        <mat-label>Link to file</mat-label>
+        <input matInput formControlName="link">
+        <mat-error [hidden]="upload.controls.name.invalid">Torrent link is required!</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Upload</button>
+</form>
