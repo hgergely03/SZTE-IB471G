@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "szte-webkeret": {
+      "hosting": {
+        "yarr-ez": [
+          "szte-webkeret"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "szte-webkeret"
+  }
+}
