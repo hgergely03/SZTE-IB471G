@@ -1,7 +1,7 @@
 export interface Comment {
-    id: number;
-    torrentId: number;
-    userName: string;
+    id: string;
+    fileId: string;  
+    userId: string;
     content: string;
-    date: Date;
+    date: any;
 }

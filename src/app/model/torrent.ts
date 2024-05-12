@@ -7,9 +7,9 @@ export interface Torrent {
     link: string;
     uploaderId: string;
     uploadDate: Date;
-    downloaded: number;
     size: number;
-    likes: number;
-    dislikes: number;
-    comments: Comment[];
+    downloaded: number;
+    // likes: number;
+    // dislikes: number;
+    // comments: Comment[];
 }

@@ -3,7 +3,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../model/user';
 import { Table } from '../model/tables';
 import { Torrent } from '../model/torrent';
+import { Comment } from '../model/comment';
 import { AuthService } from './auth.service';
+import { map, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,10 @@ export class DatabaseService {
 
   getUser(id: string) {
     return this.afs.collection<User>(Table.USERS).doc(id).valueChanges();
+  }
+
+  getUsers() {
+    return this.afs.collection<User>(Table.USERS).valueChanges();
   }
 
   updateUser(user: User) {
@@ -53,5 +59,21 @@ export class DatabaseService {
 
   deleteTorrent(id: string) {
     return this.afs.collection<Torrent>(Table.TORRENTS).doc(id).delete();
+  }
+
+  async createComment(torrentId: string, content: string) {
+    const comment: Comment = {
+      id: this.afs.createId(),
+      fileId: torrentId,
+      userId: (await this.auth.getUserId()) as string,
+      content: content,
+      date: new Date(),
+    };
+
+    return this.afs.collection(Table.COMMENTS).doc(comment.id).set(comment);
+  }
+
+  getCommentsByTorrentId(torrentId: string) {
+    return this.afs.collection<Comment>(Table.COMMENTS, ref => ref.where('fileId', '==', torrentId).orderBy("date", "desc")).valueChanges();
   }
 }

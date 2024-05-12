@@ -12,19 +12,19 @@
         <h2>Comments</h2>
         
         @if (user) {
-            <form [formGroup]="comment">
+            <form [formGroup]="comment" (submit)="createComment()">
                 <mat-form-field>
                     <mat-label>Comment</mat-label>
                     <textarea matInput formControlName="content"></textarea>
                     <mat-error *ngIf="comment.controls.content.invalid">Comment must not be empty!</mat-error>
                 </mat-form-field>
-                <button mat-raised-button color="primary">Post</button>
+                <button mat-raised-button type="submit" color="primary">Post</button>
             </form>    
         }
 
-        <div *ngFor="let comment of torrent!.comments">
+        <div *ngFor="let comment of comments">
             <mat-card>
-                <mat-card-title>{{comment.userName}}</mat-card-title>
+                <mat-card-title>{{getUsernameById(comment.userId)}}</mat-card-title>
                 <mat-card-content>{{comment.content}}</mat-card-content>
                 <mat-card-footer>at {{comment.date | yarrTime }}</mat-card-footer>
             </mat-card>
