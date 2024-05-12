@@ -46,11 +46,6 @@
                 <mat-error [hidden]="update.controls.username.valid">{{getErrorMessage(update.controls.username)}}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email">
-                <mat-error [hidden]="update.controls.email.valid">{{getErrorMessage(update.controls.email)}}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input type="password" matInput formControlName="password">
                 <mat-error [hidden]="update.controls.password.valid">{{getErrorMessage(update.controls.password)}}</mat-error>

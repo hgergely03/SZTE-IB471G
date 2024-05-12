@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
 
     update = new FormGroup({
         username: new FormControl('', [Validators.minLength(5)]),
-        email: new FormControl('', [Validators.email]),
         password: new FormControl('', [Validators.minLength(6)]),
     });
 
@@ -62,10 +61,6 @@ export class ProfileComponent implements OnInit {
             return 'Field is required!';
         }
 
-        if (errors?.['email']) {
-            return 'Email is invalid!';
-        }
-
         if (errors?.['minlength']) {
             return `Field must be at least ${errors['minlength'].requiredLength} characters!`;
         }
@@ -79,7 +74,7 @@ export class ProfileComponent implements OnInit {
         }
 
         const pw = this.update.controls.password;
-        if (pw.value !== null) {
+        if (pw.valid && pw.value !== '' && pw.value !== null) {
             this.auth.changePassword(pw.value).then(() => {
                 this.snackBar.open('Password successfully changed!', 'OK');
                 this.update.reset();
@@ -89,14 +84,13 @@ export class ProfileComponent implements OnInit {
         const id = await this.auth.getUserId() as string;
 
         const un = this.update.controls.username.value === null ? this.user?.username as string : this.update.controls.username.value;
-        const em = this.update.controls.email.value === null ? this.user?.email as string : this.update.controls.email.value;
         const user: User = {
             id: id,
             username: un,
-            email: em
+            email: this.user?.email as string
         }
 
-        if (un == this.user?.username && em == this.user?.email) {
+        if (un == this.user?.username) {
             return;
         }
 
