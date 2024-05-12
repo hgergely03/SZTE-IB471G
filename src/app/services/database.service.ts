@@ -38,4 +38,20 @@ export class DatabaseService {
     
     return this.afs.collection(Table.TORRENTS).doc(torrent.id).set(torrent);
   }
+
+  getAllTorrents() {
+    return this.afs.collection<Torrent>(Table.TORRENTS).valueChanges();
+  }
+
+  getTorrentsByUploaderId(uploaderId: string) {
+    return this.afs.collection<Torrent>(Table.TORRENTS, ref => ref.where('uploaderId', '==', uploaderId).orderBy("uploadDate", "desc")).valueChanges();
+  }
+
+  getTorrent(id: string) {
+    return this.afs.collection<Torrent>(Table.TORRENTS).doc(id).valueChanges();
+  }
+
+  deleteTorrent(id: string) {
+    return this.afs.collection<Torrent>(Table.TORRENTS).doc(id).delete();
+  }
 }

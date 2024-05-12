@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class YarrTimePipe implements PipeTransform {
-  transform(value: Date): string {
-    return value.getFullYear() + '/' + value.getMonth() + '/' + value.getDate() 
-            + ' ' + value.getHours() + ':' + value.getMinutes() + ':' + value.getSeconds() + '🏴‍☠️';
+  transform(value: any): string {
+    const date = value.toDate();
+    return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() 
+            + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '🏴‍☠️';
   }
 }

@@ -13,13 +13,7 @@ import { RouterLink } from '@angular/router';
 import { User } from '../../model/user';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
-
-const MOCK_DATA: Torrent[] = [
-    {id: "1", name: 'Torrent 1', downloaded: 100, uploadDate: new Date(), uploaderId: 'Uploader 1', description: 'Description 1', comments: [], likes: 0, dislikes: 0, size: 10, link: 'https://filesampleshub.com/download/document/txt/sample1.txt'},
-    {id: "2", name: 'Torrent 2', downloaded: 200, uploadDate: new Date(), uploaderId: 'Uploader 2', description: 'Description 2', comments: [], likes: 0, dislikes: 0, size: 10, link: 'https://filesampleshub.com/download/document/txt/sample1.txt'},
-    {id: "3", name: 'Torrent 3', downloaded: 300, uploadDate: new Date(), uploaderId: 'Uploader 3', description: 'Description 3', comments: [], likes: 0, dislikes: 0, size: 10, link: 'https://filesampleshub.com/download/document/txt/sample1.txt'},
-    {id: "4", name: 'Torrent 4', downloaded: 400, uploadDate: new Date(), uploaderId: 'Uploader 4', description: 'Description 4', comments: [], likes: 0, dislikes: 0, size: 10, link: 'https://filesampleshub.com/download/document/txt/sample1.txt'},
-]
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-profile',
@@ -41,7 +35,7 @@ const MOCK_DATA: Torrent[] = [
 })
 export class ProfileComponent implements OnInit {
     displayedColumns: string[] = ['id', 'name', 'downloaded', 'upload-date', 'delete'];
-    dataSource = MOCK_DATA;
+    dataSource: Torrent[] = [];
     user?: User;
 
     update = new FormGroup({
@@ -50,11 +44,15 @@ export class ProfileComponent implements OnInit {
         password: new FormControl('', [Validators.minLength(6)]),
     });
 
-    constructor(private auth: AuthService, private dbService: DatabaseService) {}
+    constructor(private auth: AuthService, private dbService: DatabaseService, private snackBar: MatSnackBar) {}
     
     async ngOnInit(): Promise<void> {
         this.dbService.getUser(await this.auth.getUserId() as string).subscribe(user => {
             this.user = user;
+        });
+
+        this.dbService.getTorrentsByUploaderId(await this.auth.getUserId() as string).subscribe(torrents => {
+            this.dataSource = torrents;
         });
     }
 
@@ -91,5 +89,11 @@ export class ProfileComponent implements OnInit {
         }
 
         this.dbService.updateUser(user);
+    }
+
+    async deleteTorrent(id: string) {
+        this.dbService.deleteTorrent(id).then(() => {
+            this.snackBar.open('Torrent successfully deleted!', 'OK');
+        });
     }
 }
