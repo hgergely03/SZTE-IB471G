@@ -3,13 +3,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../model/user';
 import { Table } from '../model/tables';
 import { Torrent } from '../model/torrent';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
 
-  constructor(private afs : AngularFirestore) { }
+  constructor(private afs : AngularFirestore, private auth: AuthService) { }
 
   createUser(user: User) {
     return this.afs.collection<User>(Table.USERS).doc(user.id).set(user);
@@ -23,17 +24,18 @@ export class DatabaseService {
     return this.afs.collection<User>(Table.USERS).doc(user.id).set(user);
   }
 
-  createTorrent(name: string, description: string, link: string, size: string) {
+  async createTorrent(name: string, description: string, link: string, size: string) {
     const torrent = {
       id: this.afs.createId(),
       name: name,
       description: description,
       link: link,
-      uploaderId: '',
+      uploaderId: await this.auth.getUserId(),
       uploadDate: new Date(),
       downloaded: 0,
-      size: size as any as number,
+      size: parseInt(size),
     };
+    
     return this.afs.collection(Table.TORRENTS).doc(torrent.id).set(torrent);
   }
 }

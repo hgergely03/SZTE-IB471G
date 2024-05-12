@@ -23,17 +23,23 @@ export class UploadComponent {
         name: new FormControl('', [Validators.required]),
         description: new FormControl('', [Validators.required]),
         link: new FormControl('', [Validators.required]),
-        size: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
+        size: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
     });
 
     constructor(private dbService: DatabaseService, private snackbar: MatSnackBar) { }
 
     uploadTorrent() {
+        if (this.upload.invalid) {
+            return;
+        }
+
         this.dbService.createTorrent(
             this.upload.value.name as string,
             this.upload.value.description as string,
             this.upload.value.link as string,
             this.upload.value.size as string).then(() => {
+                this.upload.reset();
+                this.upload.markAsUntouched();
                 this.snackbar.open('Torrent successfully uploaded!', 'OK');
             }).catch((error) => {
                 console.error('Error uploading torrent', error);

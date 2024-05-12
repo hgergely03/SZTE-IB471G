@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
     constructor(private auth: AuthService, private dbService: DatabaseService) {}
     
     async ngOnInit(): Promise<void> {
-        this.dbService.getUser((await this.auth.currentUser)?.uid as string).subscribe(user => {
+        this.dbService.getUser(await this.auth.getUserId() as string).subscribe(user => {
             this.user = user;
         });
     }
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
             this.auth.changePassword(pw.value);
         }
 
-        const id = (await this.auth.currentUser)?.uid as string;
+        const id = await this.auth.getUserId() as string;
 
         // TODO: Update user in database
         const user: User = {

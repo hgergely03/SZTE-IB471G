@@ -33,4 +33,9 @@ export class AuthService {
   get currentUser() {
     return this.auth.currentUser;
   }
+
+  async getUserId() {
+    const user = await this.auth.currentUser;
+    return user?.uid;
+  }
 }
