@@ -9,14 +9,17 @@
 <section>
     <div class="comments">
         <h2>Comments</h2>
-        <form [formGroup]="comment">
-            <mat-form-field>
-                <mat-label>Comment</mat-label>
-                <textarea matInput formControlName="content"></textarea>
-                <mat-error *ngIf="comment.controls.content.invalid">Comment must not be empty!</mat-error>
-            </mat-form-field>
-            <button mat-raised-button color="primary">Post</button>
-        </form>        
+        
+        @if (user) {
+            <form [formGroup]="comment">
+                <mat-form-field>
+                    <mat-label>Comment</mat-label>
+                    <textarea matInput formControlName="content"></textarea>
+                    <mat-error *ngIf="comment.controls.content.invalid">Comment must not be empty!</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary">Post</button>
+            </form>    
+        }
 
         <div *ngFor="let comment of MOCK_DATA.comments">
             <mat-card>

@@ -24,6 +24,12 @@ export class AuthService {
     return this.auth.user;
   }
 
+  changePassword(password: string) {
+    return this.auth.currentUser.then(user => {
+      return user?.updatePassword(password);
+    });
+  }
+
   get currentUser() {
     return this.auth.currentUser;
   }

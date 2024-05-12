@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../../model/user';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
     selector: 'app-login',
@@ -34,7 +36,7 @@ export class LoginComponent {
     });
 
     
-    constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) {}
+    constructor(private router: Router, private authService: AuthService, private dbService: DatabaseService, private snackBar: MatSnackBar) {}
 
     getErrorMessage(field: FormControl): string | null {
         const errors = field.errors;
@@ -65,11 +67,25 @@ export class LoginComponent {
     }
 
     registerSubmit() {
-        this.authService.register(this.register.value.email as string, this.register.value.password as string).then(() => {
-            this.snackBar.open('Registration succesful!', 'OK');
-            this.register.reset();
+        this.authService.register(this.register.value.email as string, this.register.value.password as string).then((cred) => {
+            const user: User = {
+                id: cred.user?.uid as string,
+                username: this.register.value.username as string,
+                email: cred.user?.email as string
+            };
+
+            this.dbService.createUser(user).then(() => {
+                this.snackBar.open('Registration succesful!', 'OK');
+                this.register.reset();
+                this.register.markAsUntouched();
+                this.register.markAsPristine();
+            }
+            ).catch((err) => {
+                console.error(err);
+            });
         }).catch((err) => {
             this.snackBar.open('Error: registration failed!', 'OK');
+            console.error(err);
         });
     }
 }

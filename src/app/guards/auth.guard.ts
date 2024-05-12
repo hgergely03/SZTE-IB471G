@@ -8,5 +8,6 @@ export const authGuard: CanActivateFn = async (route, state) => {
 
   const user = await authService.currentUser;
 
+  // TODO: Fix this
   return user ? true : router.parseUrl('/login');
 };

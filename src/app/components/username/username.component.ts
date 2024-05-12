@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './username.component.scss'
 })
 export class UsernameComponent {
-  @Input() username!: string;
+  @Input() username?: string;
 }

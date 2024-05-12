@@ -39,21 +39,21 @@
                 <mat-form-field>
                     <mat-label>Username</mat-label>
                     <input matInput formControlName="username">
-                    @if (register.controls.username.invalid) {
+                    @if (register.controls.username.invalid && register.controls.username.touched) {
                         <mat-error>{{getErrorMessage(register.controls.username)}}</mat-error>
                     }
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email">
-                    @if (register.controls.email.invalid) {
+                    @if (register.controls.email.invalid && register.controls.email.touched) {
                         <mat-error>{{getErrorMessage(register.controls.email)}}</mat-error>
                     }
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Password</mat-label>
                     <input type="password" matInput formControlName="password">
-                    @if (register.controls.password.invalid) {
+                    @if (register.controls.password.invalid && register.controls.password.touched) {
                         <mat-error>{{getErrorMessage(register.controls.password)}}</mat-error>
                     }
                 </mat-form-field>

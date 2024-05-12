@@ -18,11 +18,11 @@ import { Torrent } from '../../model/torrent';
 export class TorrentActionsComponent {
     @Input() torrent!: Torrent;
 
-    likeTorrent(torrentId: number) {
+    likeTorrent(torrentId: string) {
         console.log(`Like torrent with id ${torrentId}`);
     }
 
-    dislikeTorrent(torrentId: number) {
+    dislikeTorrent(torrentId: string) {
         console.log(`Dislike torrent with id ${torrentId}`);
     }
 }

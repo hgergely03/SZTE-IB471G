@@ -1,14 +1,15 @@
 import { Comment } from './comment';
 
 export interface Torrent {
-    id: number;
+    id: string;
     name: string;
     description: string;
     link: string;
-    uploaderName: string;
+    uploaderId: string;
     uploadDate: Date;
     downloaded: number;
     size: number;
     likes: number;
+    dislikes?: number;
     comments: Comment[];
 }
