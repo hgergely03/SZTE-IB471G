@@ -19,7 +19,6 @@
     <mat-form-field>
         <mat-label>Size</mat-label>
         <input matInput formControlName="size" type="number">
-        <!-- TODO: Not a number error -->
         <mat-error [hidden]="upload.controls.size.invalid">Torrent size is required!</mat-error>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary">Upload</button>
