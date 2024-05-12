@@ -23,4 +23,8 @@ export class AuthService {
   isLoggedIn() {
     return this.auth.user;
   }
+
+  get currentUser() {
+    return this.auth.currentUser;
+  }
 }
