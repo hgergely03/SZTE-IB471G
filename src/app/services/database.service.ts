@@ -6,6 +6,7 @@ import { Torrent } from '../model/torrent';
 import { Comment } from '../model/comment';
 import { AuthService } from './auth.service';
 import { map, take } from 'rxjs';
+import { Engagement } from '../model/engagement';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,15 @@ export class DatabaseService {
       downloaded: 0,
       size: parseInt(size),
     };
-    
+
+    const engagement: Engagement = {
+      fileId: torrent.id,
+      likeNumber: 0,
+      dislikeNumber: 0,
+      downloadNumber: 0,
+    };
+
+    this.afs.collection(Table.ENGAGEMENTS).doc(torrent.id).set(engagement);
     return this.afs.collection(Table.TORRENTS).doc(torrent.id).set(torrent);
   }
 
@@ -75,5 +84,25 @@ export class DatabaseService {
 
   getCommentsByTorrentId(torrentId: string) {
     return this.afs.collection<Comment>(Table.COMMENTS, ref => ref.where('fileId', '==', torrentId).orderBy("date", "desc")).valueChanges();
+  }
+
+
+  getEngagementByTorrentId(torrentId: string) {
+    return this.afs.collection<Engagement>(Table.ENGAGEMENTS).doc(torrentId).valueChanges();
+  }
+
+  likeTorrent(engagement: Engagement) {
+    engagement.likeNumber++; 
+    return this.afs.collection<Engagement>(Table.ENGAGEMENTS).doc(engagement.fileId).set(engagement);
+  }
+
+  dislikeTorrent(engagement: Engagement) {
+    engagement.dislikeNumber++;
+    return this.afs.collection<Engagement>(Table.ENGAGEMENTS).doc(engagement.fileId).set(engagement);
+  }
+
+  downloadTorrent(engagement: Engagement) {
+    engagement.downloadNumber++;
+    return this.afs.collection<Engagement>(Table.ENGAGEMENTS).doc(engagement.fileId).set(engagement);
   }
 }

@@ -14,7 +14,6 @@ import { DatabaseService } from '../../services/database.service';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from '../../model/comment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { map } from 'rxjs';
 import { User } from '../../model/user';
 
 @Component({
@@ -53,6 +52,7 @@ export class DetailsComponent implements OnInit {
     loggedIn?: any;
     torrents?: any;
     user$?: any;
+    comments$?: any;
 
     ngOnInit(): void {
         this.params = this.activatedRoute.params.subscribe(params => {
@@ -71,7 +71,7 @@ export class DetailsComponent implements OnInit {
             this.users = users;
         });
 
-        this.dbService.getCommentsByTorrentId(this.id as string).subscribe(comments => {
+        this.comments$ = this.dbService.getCommentsByTorrentId(this.id as string).subscribe(comments => {
             this.comments = comments;
         });
     }
@@ -82,6 +82,7 @@ export class DetailsComponent implements OnInit {
         this.loggedIn.unsubscribe();
         this.torrents.unsubscribe();
         this.user$.unsubscribe();
+        this.comments$.unsubscribe();
     }
 
     getUsernameById(id: string) {

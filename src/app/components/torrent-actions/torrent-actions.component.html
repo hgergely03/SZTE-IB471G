@@ -1,9 +1,9 @@
-<a [href]="torrent.link" download mat-icon-button [matBadge]="torrent.downloaded" matBadgeColor="primary">
+<a (click)="downloadTorrent()" [href]="torrent.link" download mat-icon-button [matBadge]="engagement?.downloadNumber" matBadgeColor="primary">
     <mat-icon>file_download</mat-icon>
 </a>
-<button (click)="dislikeTorrent(torrent.id)" mat-icon-button [matBadge]="torrent.downloaded" matBadgeColor="accent">
+<button (click)="likeTorrent()" mat-icon-button [matBadge]="engagement?.likeNumber" matBadgeColor="accent">
     <mat-icon>expand_less</mat-icon>
 </button>
-<button (click)="likeTorrent(torrent.id)" mat-icon-button [matBadge]="torrent.downloaded" matBadgeColor="accent">
+<button (click)="dislikeTorrent()" mat-icon-button [matBadge]="engagement?.dislikeNumber" matBadgeColor="accent">
     <mat-icon>expand_more</mat-icon>
 </button>

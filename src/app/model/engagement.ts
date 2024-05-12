@@ -1,6 +1,6 @@
 export interface Engagement {
-    id: string;
-    userId: string;
-    torrentId: string;
-    like: boolean;
+    fileId: string;
+    likeNumber: number;
+    dislikeNumber: number;
+    downloadNumber: number;
 }

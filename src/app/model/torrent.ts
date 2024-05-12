@@ -1,5 +1,3 @@
-import { Comment } from './comment';
-
 export interface Torrent {
     id: string;
     name: string;
@@ -9,7 +7,4 @@ export interface Torrent {
     uploadDate: Date;
     size: number;
     downloaded: number;
-    // likes: number;
-    // dislikes: number;
-    // comments: Comment[];
 }
