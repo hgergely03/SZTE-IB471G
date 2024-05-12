@@ -75,20 +75,32 @@ export class ProfileComponent implements OnInit {
 
     async updateUser() {
         const pw = this.update.controls.password;
-        if (pw && pw.value !== null) {
-            this.auth.changePassword(pw.value);
+        if (pw.value !== null) {
+            this.auth.changePassword(pw.value).then(() => {
+                this.snackBar.open('Password successfully changed!', 'OK');
+                this.update.reset();
+            });
         }
 
         const id = await this.auth.getUserId() as string;
 
-        // TODO: Update user in database
+        const un = this.update.controls.username.value === null ? this.user?.username as string : this.update.controls.username.value;
+        const em = this.update.controls.email.value === null ? this.user?.email as string : this.update.controls.email.value;
         const user: User = {
             id: id,
-            username: this.update.value.username as string,
-            email: this.update.value.email as string
+            username: un,
+            email: em
         }
 
-        this.dbService.updateUser(user);
+        if (un == this.user?.username && em == this.user?.email) {
+            return;
+        }
+
+        this.dbService.updateUser(user).then(() => {
+            this.snackBar.open('User successfully updated!', 'OK');
+        });
+
+        this.update.reset();
     }
 
     async deleteTorrent(id: string) {

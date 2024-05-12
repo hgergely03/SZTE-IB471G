@@ -39,7 +39,7 @@
 <mat-card>
     <mat-card-content>
         <h2>Change user data</h2>
-        <form [formGroup]="update">
+        <form [formGroup]="update" (submit)="updateUser()">
             <mat-form-field>
                 <mat-label>Username</mat-label>
                 <input matInput formControlName="username">
