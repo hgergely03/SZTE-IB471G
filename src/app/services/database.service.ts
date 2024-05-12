@@ -105,4 +105,8 @@ export class DatabaseService {
     engagement.downloadNumber++;
     return this.afs.collection<Engagement>(Table.ENGAGEMENTS).doc(engagement.fileId).set(engagement);
   }
+
+  getMostLikedTorrent() {
+    return this.afs.collection<Engagement>(Table.ENGAGEMENTS, ref => ref.orderBy("likeNumber", "desc").limit(1)).valueChanges();
+  }
 }

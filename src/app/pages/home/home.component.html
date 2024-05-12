@@ -23,6 +23,15 @@
         </mat-expansion-panel>
     </mat-accordion>
 
+    @if (mostLikedTorrent && engagement) {
+        <h2>Most liked torrent</h2>
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>{{mostLikedTorrent.name}} - {{mostLikedTorrent.size | torrentSize}} - {{engagement.likeNumber}} likes - {{engagement.dislikeNumber}} dislikes</mat-card-title>
+            </mat-card-content>
+        </mat-card>
+    }
+
     <h2>List of our wares</h2>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

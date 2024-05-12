@@ -8,6 +8,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from "@angular/common";
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
@@ -29,6 +30,7 @@ import { User } from '../../model/user';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
+        MatProgressSpinnerModule,
         CommonModule,
         YarrTimePipe
     ]

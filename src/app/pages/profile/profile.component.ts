@@ -74,6 +74,10 @@ export class ProfileComponent implements OnInit {
     }
 
     async updateUser() {
+        if (this.update.invalid) {
+            return;
+        }
+
         const pw = this.update.controls.password;
         if (pw.value !== null) {
             this.auth.changePassword(pw.value).then(() => {
