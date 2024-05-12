@@ -32,7 +32,8 @@ export class UploadComponent {
         this.dbService.createTorrent(
             this.upload.value.name as string,
             this.upload.value.description as string,
-            this.upload.value.link as string).then(() => {
+            this.upload.value.link as string,
+            this.upload.value.size as string).then(() => {
                 this.snackbar.open('Torrent successfully uploaded!', 'OK');
             }).catch((error) => {
                 console.error('Error uploading torrent', error);

@@ -16,5 +16,10 @@
         <input matInput formControlName="link">
         <mat-error [hidden]="upload.controls.name.invalid">Torrent link is required!</mat-error>
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Size</mat-label>
+        <input matInput formControlName="size">
+        <mat-error [hidden]="upload.controls.size.invalid">Torrent size is required!</mat-error>
+    </mat-form-field>
     <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

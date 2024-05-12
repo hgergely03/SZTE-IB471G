@@ -23,7 +23,7 @@ export class DatabaseService {
     return this.afs.collection<User>(Table.USERS).doc(user.id).set(user);
   }
 
-  createTorrent(name: string, description: string, link: string) {
+  createTorrent(name: string, description: string, link: string, size: string) {
     const torrent = {
       id: this.afs.createId(),
       name: name,
@@ -32,7 +32,7 @@ export class DatabaseService {
       uploaderId: '',
       uploadDate: new Date(),
       downloaded: 0,
-      size: 0,
+      size: size as any as number,
     };
     return this.afs.collection(Table.TORRENTS).doc(torrent.id).set(torrent);
   }
