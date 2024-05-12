@@ -4,8 +4,15 @@
     </button>
     <ul>
       <li id="title"><a routerLink="/">Yarr-Ez</a></li>
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/profile">Profile</a></li>
-      <li><a routerLink="/upload">Upload</a></li>
+      @if (!user) {
+        <li><a routerLink="/login">Login</a></li>
+      } @else {
+        <li><a routerLink="" (click)="logOut()">Logout</a></li>
+      }
+
+      @if (user) {
+        <li><a routerLink="/profile">Profile</a></li>
+        <li><a routerLink="/upload">Upload</a></li>
+      }
     </ul>
 </mat-toolbar>

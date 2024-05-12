@@ -18,13 +18,13 @@
             <button mat-raised-button color="primary">Post</button>
         </form>        
 
-        @for (comment of MOCK_DATA.comments; track $index) {
+        <div *ngFor="let comment of MOCK_DATA.comments">
             <mat-card>
                 <mat-card-title>{{comment.userName}}</mat-card-title>
                 <mat-card-content>{{comment.content}}</mat-card-content>
                 <mat-card-footer>at {{comment.date | yarrTime }}</mat-card-footer>
             </mat-card>
             <mat-divider></mat-divider>
-        }
+        </div>
     </div>
 </section>

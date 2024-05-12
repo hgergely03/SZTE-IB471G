@@ -31,7 +31,7 @@
                         <mat-error>{{getErrorMessage(login.controls.password)}}</mat-error>
                     }
                 </mat-form-field>
-                <button mat-raised-button color="primary">Login</button>
+                <button mat-raised-button color="primary" [disabled]="this.login.invalid" (click)="loginSubmit()">Login</button>
             </form>
 
             <h2>Or buckle up and create an account</h2>
@@ -57,7 +57,7 @@
                         <mat-error>{{getErrorMessage(register.controls.password)}}</mat-error>
                     }
                 </mat-form-field>
-                <button mat-raised-button color="primary">Register</button>
+                <button mat-raised-button color="primary" [disabled]="this.register.invalid" (click)="registerSubmit()">Register</button>
             </form>
         </mat-card-content>
     </mat-card>

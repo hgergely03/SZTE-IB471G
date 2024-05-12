@@ -2,13 +2,20 @@
     <mat-drawer #drawer mode="over">
         <ul (click)="drawer.toggle()">
             <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/profile">Profile</a></li>
-            <li><a routerLink="/upload">Upload</a></li>
+            @if (!user) {
+                <li><a routerLink="/login">Login</a></li>
+            } @else {
+                <li><a routerLink="" (click)="logOut()">Logout</a></li>
+            }
+
+            @if (user) {
+                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/upload">Upload</a></li>
+            }
         </ul>
     </mat-drawer>
     <mat-drawer-content>
-        <app-navbar (onMenuClick)="drawer.toggle()"></app-navbar>
+        <app-navbar (onMenuClick)="drawer.toggle()" [user]="user"></app-navbar>
         <router-outlet />
     </mat-drawer-content>
 </mat-drawer-container>

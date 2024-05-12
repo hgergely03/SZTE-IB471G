@@ -31,3 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 992px) {
+    mat-card {
+        width: 80vw;
+    }
+}
