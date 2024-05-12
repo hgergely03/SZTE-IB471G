@@ -9,6 +9,7 @@ import { TorrentSizePipe } from "../../pipes/torrent-size.pipe";
 import { TorrentActionsComponent } from "../../components/torrent-actions/torrent-actions.component";
 import { DatabaseService } from '../../services/database.service';
 import { Engagement } from '../../model/engagement';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-home',
@@ -22,7 +23,8 @@ import { Engagement } from '../../model/engagement';
         RouterLink,
         YarrTimePipe,
         TorrentSizePipe,
-        TorrentActionsComponent
+        TorrentActionsComponent,
+        CommonModule
     ]
 })
 export class HomeComponent implements OnInit {

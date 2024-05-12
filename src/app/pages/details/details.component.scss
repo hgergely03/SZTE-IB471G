@@ -35,6 +35,16 @@ form {
     margin-bottom: 2rem;
 }
 
+.title-no-comment::after {
+    content: ' - post something to make it more lively!';
+    color: red;
+}
+
+.title-comment::after {
+    content: ' - join the discussion!';
+    color: greenyellow;
+}
+
 @media screen and (max-width: 992px) {
     main {
         flex-direction: column;

@@ -9,7 +9,7 @@
 
 <section>
     <div class="comments">
-        <h2>Comments</h2>
+        <h2 [ngClass]="comments.length === 0 ? 'title-no-comment' : 'title-comment'">Comments</h2>
         
         @if (user) {
             <form [formGroup]="comment" (submit)="createComment()">
