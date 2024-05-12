@@ -10,6 +10,6 @@ export interface Torrent {
     downloaded: number;
     size: number;
     likes: number;
-    dislikes?: number;
+    dislikes: number;
     comments: Comment[];
 }

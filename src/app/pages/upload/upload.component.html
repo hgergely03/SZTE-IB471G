@@ -1,6 +1,6 @@
 <h1>Upload new torrent</h1>
 
-<form [formGroup]="upload">
+<form [formGroup]="upload" (submit)="uploadTorrent()">
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
@@ -16,5 +16,5 @@
         <input matInput formControlName="link">
         <mat-error [hidden]="upload.controls.name.invalid">Torrent link is required!</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary">Upload</button>
+    <button mat-raised-button type="submit" color="primary">Upload</button>
 </form>

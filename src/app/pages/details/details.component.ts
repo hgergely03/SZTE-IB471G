@@ -47,7 +47,7 @@ export class DetailsComponent implements OnInit {
                 { id: 1, torrentId: 1, content: 'Comment 1', userName: 'Author 1', date: new Date() },
                 { id: 2, torrentId: 1, content: 'Comment 2', userName: 'Author 2', date: new Date() },
                 { id: 3, torrentId: 1, content: 'Comment 3', userName: 'Author 3', date: new Date() }
-            ], likes: 0, size: 100, link: 'https://filesamples.com/samples/document/txt/sample3.txt'
+            ], likes: 0, dislikes: 0, size: 100, link: 'https://filesamples.com/samples/document/txt/sample3.txt'
         };
 
     constructor(private auth: AuthService) {}

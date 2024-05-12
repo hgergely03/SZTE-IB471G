@@ -3,6 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
     selector: 'app-upload',
@@ -21,5 +23,19 @@ export class UploadComponent {
         name: new FormControl('', [Validators.required]),
         description: new FormControl('', [Validators.required]),
         link: new FormControl('', [Validators.required]),
+        size: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
     });
+
+    constructor(private dbService: DatabaseService, private snackbar: MatSnackBar) { }
+
+    uploadTorrent() {
+        this.dbService.createTorrent(
+            this.upload.value.name as string,
+            this.upload.value.description as string,
+            this.upload.value.link as string).then(() => {
+                this.snackbar.open('Torrent successfully uploaded!', 'OK');
+            }).catch((error) => {
+                console.error('Error uploading torrent', error);
+            });
+    }
 }
